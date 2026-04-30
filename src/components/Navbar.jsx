@@ -6,6 +6,7 @@ import logoReact from "../assets/react.svg"
 import CartWidget from "./CartWidget"
 
 const Navbar =()=> {
+    console.log('Hola soy Navbar')
     return(
         //  <nav className={styles.navContainer}></nav>
         <nav className='nav-container'>
