@@ -8,20 +8,22 @@ import Navbar from "./components/Navbar"
 
 function App() {
 
-console.log('Hola soy App')
+  console.log('Hola soy App')
+
+
   return (
     <>
       {/* <Navbar></Navbar> */}
       <Navbar />
-      <ItemCount stock={10}/>
-     <ItemListContainer
-      saludo="Hola chicos!" //string
-       numero={5} //number
+      <ItemCount stock={10} />
+      <ItemListContainer
+        saludo="Hola chicos!" //string
+        numero={5} //number
         active={false} //boolean
-         list={[1,2,3,4,5,6]} //arrays
-          usuario={{nombre:'Laura'}} //objects
-           comprar={()=> alert('Compraste!')} //funtions
-           />
+        list={[1, 2, 3, 4, 5, 6]} //arrays
+        usuario={{ nombre: 'Laura' }} //objects
+        comprar={() => alert('Compraste!')} //funtions
+      />
     </>
   )
 }
