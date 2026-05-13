@@ -1,4 +1,5 @@
 import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemCount from './components/ItemCount'
 import ItemListContainer from './components/ItemListContainer'
 

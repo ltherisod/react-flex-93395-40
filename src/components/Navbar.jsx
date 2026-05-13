@@ -1,27 +1,35 @@
-//importo el css
-import "../css/Navbar.css"
-import styles from "../css/Navbar.module.css"
-//IMPORT DE IMG
-import logoReact from "../assets/react.svg"
-import CartWidget from "./CartWidget"
-
-const Navbar =()=> {
-    console.log('Hola soy Navbar')
-    return(
-        //  <nav className={styles.navContainer}></nav>
-        <nav className='nav-container'>
-            <a className='a-nav' href="">
-                {/* IMAGENES EN PUBLIC */}
-                <img src='../img/logo-shop.png' alt='logo' style={{width:'9rem'}}/>
-                {/* IMAGENES EN SRC/ASSETS */}
-                  {/* <img src={logoReact} alt='logo' style={{width:'9rem'}}/> */}
-            </a>
-            <a className='a-nav' href="">Nuevos</a>
-            <a className='a-nav' href="">Ofertas</a>
-            <a className='a-nav' href="">Mas Vendidos</a>
-            <CartWidget/>
-        </nav>
-    )
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import CartWidgetRI from './CartWidget';
+function NavbarRB() {
+  console.log('Navbar')
+  return (
+    <Navbar expand="lg" className="bg-body-tertiary">
+      <Container>
+        <Navbar.Brand href="#home">
+            <img src='../img/logo-shop.png' alt='logo' style={{width:'8rem'}}/>
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="#home">Home</Nav.Link>
+            <NavDropdown title="Productos" id="basic-nav-dropdown">
+              <NavDropdown.Item href="#action/3.1">Nuevos</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/3.2">
+                Ofertas
+              </NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/3.3">Mas Vendidos</NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+          <CartWidgetRI/>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
 }
 
-export default Navbar
+export default NavbarRB;
