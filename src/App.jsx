@@ -6,6 +6,8 @@ import ItemListContainer from './components/ItemListContainer'
 //importar todos los componentes
 //import + NOMBRE DEL COMPONENTE + from + RUTA DEL COMPONENTE
 import Navbar from "./components/Navbar"
+import FetchApi from './examples/FetchApi';
+import ItemDetailContainer from './components/ItemDetailContainer';
 
 function App() {
 
@@ -14,7 +16,7 @@ console.log('Hola soy App')
     <>
       {/* <Navbar></Navbar> */}
       <Navbar />
-      <ItemCount stock={10}/>
+     {/* <FetchApi/> */}
      <ItemListContainer
       saludo="Hola chicos!" //string
        numero={5} //number
@@ -23,6 +25,7 @@ console.log('Hola soy App')
           usuario={{nombre:'Laura'}} //objects
            comprar={()=> alert('Compraste!')} //funtions
            />
+           <ItemDetailContainer/>
     </>
   )
 }
