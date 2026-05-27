@@ -1,27 +1,39 @@
-import { useState, useEffect } from "react"
-import { getProducts } from "../mock/AsyncData"
+import { useEffect, useState } from "react"
+import { getProducts } from "../mock/asyncData"
+import Item from "./Item"
 import ItemList from "./ItemList"
+import { useParams } from "react-router-dom"
 
-const ItemListContainer = ({saludo})=> {
-    const [data, setData]= useState([])
+
+
+const ItemListContainer = ({saludo, alumno})=> {
+    const[data, setData]= useState([])
+    const {type}= useParams()
 
 
     useEffect(()=>{
+        //pedir datos
         getProducts()
-        .then((res)=> setData(res))
-    },[])
+        .then((res)=> {
+            if(type){
+                //filtrar
+                setData(res.filter((prod)=> prod.category === type))
+            }else{
+                //todos los productos
+                setData(res)
+            }
+        })
+        //a la escucha del cambio de categoria
+    },[type])
 
 
-    // const{saludo}=props
-// console.log(props, 'props')
-console.log('Hola soy ItemListContainer', data)
 
-    return(
-        <div>
-            {/* <h2>{props.saludo}</h2> */}
-            <h1>{saludo}</h1>
-            <ItemList data={data}/>
-        </div>
+    return( 
+    <div>
+       <h1>{saludo}</h1> 
+       <ItemList data={data}/>
+    </div>
     )
 }
+
 export default ItemListContainer

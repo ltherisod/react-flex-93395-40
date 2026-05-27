@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from 'react'
-import { getOneProduct } from '../mock/AsyncData'
+import { getOneProduct } from '../mock/asyncData'
 import ItemDetail from './ItemDetail'
+import { useParams } from 'react-router-dom'
 
 const ItemDetailContainer = () => {
-    const [detail, setDetail]= useState({})
-
+    const[detail, setDetail]= useState({})
+    const {id} = useParams()
+   
     useEffect(()=>{
-        getOneProduct('02')//pasa a ser dinamico con navegacion
+        getOneProduct(id)
         .then((res)=> setDetail(res))
-    },[])
+        .catch((error)=> console.log(error))
+    },[id])
+    console.log('ItemDetailContainer')
   return (
-    <div><ItemDetail detail={detail}/></div>
+    <>
+        <ItemDetail detail={detail}/>
+    </>
   )
 }
 
