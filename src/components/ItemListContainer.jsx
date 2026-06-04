@@ -15,6 +15,7 @@ const ItemListContainer = ({saludo, alumno})=> {
 
     useEffect(()=>{
         setLoader(true)
+        
         //pedir datos
         getProducts()
         .then((res)=> {
