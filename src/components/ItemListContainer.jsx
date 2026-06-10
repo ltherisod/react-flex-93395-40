@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
-import { getProducts } from "../mock/asyncData"
 import Item from "./Item"
 import ItemList from "./ItemList"
 import { useParams } from "react-router-dom"
 import LoaderComponent from "./LoaderComponent"
+import { collection, getDocs } from "firebase/firestore"
+import { db } from "../firebaseConfig"
 
 
 
@@ -12,30 +13,28 @@ const ItemListContainer = ({saludo, alumno})=> {
     const [loader, setLoader]= useState(false)
     const {type}= useParams()
 
-
-    useEffect(()=>{
-        setLoader(true)
-        
-        //pedir datos
-        getProducts()
-        .then((res)=> {
-            if(type){
-                //filtrar
-                setData(res.filter((prod)=> prod.category === type))
-            }else{
-                //todos los productos
-                setData(res)
-            }
-        })
-        .catch((error)=> console.log(error))
-        .finally(()=> setLoader(false))
-        //a la escucha del cambio de categoria
-    },[type])
-
+        useEffect(()=> {
+             setLoader(true)
+            const prodColl= type ? query(collection(db, "items"), where("category", "==", type)):collection(db, "items")
+             getDocs(prodColl)
+             .then((res)=> {
+                const list = res.docs.map((doc)=> {
+                    return {
+                        id: doc.id,
+                        ...doc.data()
+                    }
+                })
+                setData(list)
+                console.log(list)
+             })
+             .catch((error)=> console.log(error))
+             .finally(()=> setLoader(false))
+        },[type])
 
 
     return( 
     <>
+    
     {
         loader 
         ? <LoaderComponent text={type ? "Cargando categoria..." : "Cargando productos..."}/>
