@@ -3,7 +3,7 @@ import Item from "./Item"
 import ItemList from "./ItemList"
 import { useParams } from "react-router-dom"
 import LoaderComponent from "./LoaderComponent"
-import { collection, getDocs } from "firebase/firestore"
+import { collection, getDocs, query, where } from "firebase/firestore"
 import { db } from "../firebaseConfig"
 
 
@@ -25,7 +25,6 @@ const ItemListContainer = ({saludo, alumno})=> {
                     }
                 })
                 setData(list)
-                console.log(list)
              })
              .catch((error)=> console.log(error))
              .finally(()=> setLoader(false))
