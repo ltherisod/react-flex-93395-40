@@ -28,8 +28,12 @@ console.log('ItemDetail')
         alignItems: 'center',
         gap: '10px'
       }}>
-        <h2>Detalle del producto {detail.name}</h2>
-        <img src={detail.img} alt={detail.name}/>
+        <h2 className='page-title'>Detalle del producto {detail.name}</h2>
+        <img 
+          src={detail.img} 
+          alt={detail.name}
+          style={{height: '300px', objectFit: 'contain', objectPosition: 'center', padding: '10px'}}
+        />
         <p>{detail.description}</p>
         <p>${detail.price}</p>
         <p>stock disponible: {detail.stock} unidades</p>

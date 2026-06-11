@@ -39,7 +39,7 @@ const ItemListContainer = ({saludo, alumno})=> {
         loader 
         ? <LoaderComponent text={type ? "Cargando categoria..." : "Cargando productos..."}/>
         : <div>
-       <h1>{saludo}{type && <span style={{textTransform:'capitalize'}}>{type}</span>}</h1> 
+       <h1 className='page-title'>{saludo}{type && <span style={{textTransform:'capitalize'}}>{type}</span>}</h1> 
        <ItemList data={data}/>
     </div>
     }

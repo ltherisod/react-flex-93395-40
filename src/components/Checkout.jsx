@@ -51,15 +51,15 @@ const Checkout = () => {
     <>
       {orderId ? (
         <div>
-          <h1>Muchas gracias por tu compra!</h1>
-          <h2>Te dejamos el código de tu orden: {orderId}</h2>
+          <h1 className='page-title'>¡Gracias por tu compra! 🎉</h1>
+          <h2 className='page-title'>Tu número de orden: {orderId} 📦</h2>
           <Link to='/' className='btn btn-dark'>
             Volver a Home
           </Link>
         </div>
       ) : (
         <div>
-          <h1>Complete con sus datos</h1>
+          <h1 className='page-title'>Completa con tus datos 📝</h1>
 
           <form
             className='p-4 border rounded shadow-sm bg-light'

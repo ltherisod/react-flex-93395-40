@@ -1,5 +1,6 @@
 //1. IMPORTAR CREATECONTEXT
 import { createContext, useState } from "react";
+import toast from 'react-hot-toast';
 
 
 //2. CREO EL CONTEXTO
@@ -30,15 +31,18 @@ export const CartProvider = ({children})=>{
                     }
                 })
             )
+            toast.success(`Se agregaron ${qty} ${item.name}(s) más al carrito 🛒`, {icon: '✅'})
          }else{
 
              setCart([...cart,{...item, quantity:qty}])
+             toast.success(`✨ ${item.name} agregado al carrito`, {icon: '🛒'})
          }
     }
 
     //borrar el carrito
     const clear = ()=> {
         setCart([])
+        toast.success('Carrito vaciado', {icon: '✨'})
     }
 
     //eliminar un item

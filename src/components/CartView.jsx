@@ -1,15 +1,17 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { CartContext } from '../context/CartContext'
 import { Link } from 'react-router-dom'
+import toast from 'react-hot-toast'
 
 
 
 const CartView = () => {
   const {cart, clear, removeItem, total}= useContext(CartContext)
+ 
     
   return (
     <div>
-        <h1>Tu carrito 🛒</h1>
+        <h1 className='page-title'>Tu carrito 🛒</h1>
         <div>
             {
                 // cart.map((compra)=> <CartItem key={compra.id} compra={compra}/>)
